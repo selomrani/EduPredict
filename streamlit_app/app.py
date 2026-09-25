@@ -1,12 +1,15 @@
+import os
 import joblib
 import pandas as pd
 import streamlit as st
 
+HERE = os.path.dirname(__file__)
+
 
 @st.cache_resource
 def load_model():
-    model = joblib.load("linear_regression_model.pkl")
-    features = joblib.load("features.pkl")
+    model = joblib.load(os.path.join(HERE, "linear_regression_model.pkl"))
+    features = joblib.load(os.path.join(HERE, "features.pkl"))
     return model, features
 
 
